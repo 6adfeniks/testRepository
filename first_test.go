@@ -1,12 +1,18 @@
 package main
 
-import "testing"
+import (
+	"bytes"
+	"testing"
+)
 
-func TestFirst(t *testing.T){
-	got := Factorial(5)
-	want := 120
-	if got != want  {
-		t.Errorf("got %v want %v", got, want)
+func TestGreet(t *testing.T) {
+	buffer := bytes.Buffer{}
+	Greet(&buffer, "Chris")
+
+	got := buffer.String()
+	want := "Hello, Chris"
+
+	if got != want {
+		t.Errorf("got %q want %q", got, want)
 	}
-
 }
